@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name List</title>
+</head>
+<body>
+    <h1>Name List</h1>
+    <label for="nameInput">Enter a name:</label>
+    <input type="text" id="nameInput">
+    <button onclick="addName()">Add</button>
+    <ul id="nameList"></ul>
+
+    <script>
+        const names = [];
+
+        function addName() {
+            const name = document.getElementById('nameInput').value;
+            if (name === '') return;
+
+            names.push(name);
+            names.sort();
+
+            const nameList = document.getElementById('nameList');
+            nameList.innerHTML = '';
+            names.forEach(n => {
+                const li = document.createElement('li');
+                li.innerText = n;
+                nameList.appendChild(li);
+            });
+
+            document.getElementById('nameInput').value = '';
+        }
+    </script>
+</body>
+</html>
